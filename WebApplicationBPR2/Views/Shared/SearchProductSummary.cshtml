@@ -2,9 +2,17 @@
 
 <div id="body">
     <div class="header">
+        <div>
+            <h1>search results</h1>
+        </div>
+    </div>
+</div>
+
+<div id="header">
+    <div class="body">
         @foreach (var item in Model)
         {
-            <div class=" row">
+            <div class= "col-md-4">
                 <img src="~/images/@(item.PhotoId).jpg" alt="">
                 <h3>
                     <a asp-controller="Product" asp-action="Details" asp-route-id="@item.Id">@item.Title</a>
