@@ -53,7 +53,6 @@ namespace WebApplicationBPR2.Controllers
 
         public IActionResult CheckoutComplete()
         {
-            ViewBag.CheckoutCompleteMessage = "Thanks for your order! ";
             return View();
         }
     }

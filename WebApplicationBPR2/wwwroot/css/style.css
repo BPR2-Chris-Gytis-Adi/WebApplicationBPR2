@@ -21,6 +21,18 @@ a:active {
 img {
 	border: none;
 }
+
+div.formCheck {
+    display: block;
+    text-align: center;
+}
+
+formCheck {
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+}
 /*-------------------------------------------FONTS---------------------------------------------*/
 @font-face {
 	font-family: 'roboto-regular-webfont';

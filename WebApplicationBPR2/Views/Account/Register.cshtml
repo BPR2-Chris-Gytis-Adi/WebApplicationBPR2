@@ -8,38 +8,25 @@
         </div>
     </div>
 </div>
-   
-        <div class="row loginForm">
-            <div class="col-md-8 col-md-offset-2">
-                
-                <form asp-controller="Account" asp-action="Register" method="post" class="form-horizontal" role="form">
-                    <hr />
-                    <div class="text-center">
-                        <h5>Create a new account and order your first product today!</h5>
-                    </div>
-                    
-                    <hr />
-                    <div class="form-group">
-                        <label asp-for="UserName" class="col-md-2 control-label"></label>
-                        <div class="col-md-6">
-                            <input asp-for="UserName" class="form-control" />
-                            <span asp-validation-for="UserName" class="text-danger"></span>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="Password" class="col-md-2 control-label"></label>
-                        <div class="col-md-6">
-                            <input asp-for="Password" class="form-control" />
-                            <span asp-validation-for="Password" class="text-danger"></span>
-                        </div>
-                    </div>
-                    <div class="form-group pull-right formPullRightButton">
-                        <div class="col-md-offset-2 col-md-10">
-                            <input type="submit" class="btn btn-success " value="Register" />
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
+
    
 
+<div id="body" class="contact">
+    <div class="footer">
+        <div class="contact">
+            <h1>Create a new account and order your first product today!</h1>
+
+            <form asp-controller="Account" asp-action="Register" method="post" class="form-horizontal " role="form">
+                <label asp-for="UserName"></label>
+                <input asp-for="UserName" class="form-control" />
+                <span asp-validation-for="UserName" class="text-danger"></span>
+
+                <label asp-for="Password"></label>
+                <input asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+
+                <input type="submit" value="Register" id="submit">
+            </form>
+        </div>
+    </div>
+</div>
