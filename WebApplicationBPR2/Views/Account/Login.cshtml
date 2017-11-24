@@ -24,7 +24,7 @@
                 <label asp-for="Password"></label>
                 <input asp-for="Password" class="form-control" />
                 <span asp-validation-for="Password" class="text-danger"></span>
-
+                <label class="text-danger">* must contain: caps and non-caps, numeric and nonliteral(eg. %$^&)</label>
                 <input type="submit" value="Login" id="submit">
             </form>
         </div>
