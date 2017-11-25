@@ -43,7 +43,9 @@ namespace WebApplicationBPR2.Controllers
             {
                 _shoppingCart.AddToCart(selectedProduct, 1);
             }
-            return RedirectToAction("Product", "App"); // remains on the products page, but you can see added prod in the cart
+            //return RedirectToAction("Product", "App"); // returns to the products page, but you can see added prod in the cart
+            return RedirectToAction("Index"); // goes to cart
+
         }
 
         public RedirectToActionResult RemoveFromShoppingCart(int productId)
