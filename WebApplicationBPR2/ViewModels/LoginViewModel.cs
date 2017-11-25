@@ -9,7 +9,7 @@ namespace WebApplicationBPR2.ViewModels
 {
     public class LoginViewModel
     {
-        [Required, Remote("UserNameAlreadyExists", "User", ErrorMessage = "Already exists!")]
+        [Required]
         [Display(Name = "User name")]
         [MinLength(5)]
         public string UserName { get; set; }

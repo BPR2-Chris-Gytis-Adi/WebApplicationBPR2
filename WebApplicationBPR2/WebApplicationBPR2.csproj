@@ -14,6 +14,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="Properties\PublishProfiles\freezee - FTP.pubxml" />
+    <None Remove="Properties\PublishProfiles\freezee - Web Deploy.pubxml" />
+    <None Remove="Properties\PublishProfiles\freezeee - FTP.pubxml" />
+    <None Remove="Properties\PublishProfiles\freezeee - Web Deploy.pubxml" />
+    <None Remove="Properties\PublishProfiles\freezeemoney - Web Deploy.pubxml" />
+    <None Remove="Properties\PublishProfiles\freezemoney - Web Deploy.pubxml" />
     <None Remove="Properties\PublishProfiles\StoreBPR2 - Web Deploy.pubxml" />
   </ItemGroup>
 

@@ -53,7 +53,9 @@ namespace WebApplicationBPR2
         public void Configure(IApplicationBuilder app, IHostingEnvironment env) // basically saying when you start up tell me how you wanna listen for web requests, what do you want to do when web requests are executed
         {
             app.UseSession(); //uses the session service
+#pragma warning disable CS0618 // Type or member is obsolete
             app.UseIdentity();
+#pragma warning restore CS0618 // Type or member is obsolete
 
             if (env.IsDevelopment()) // one can set the environment in project Properties/Debug/Environment variables
             {
