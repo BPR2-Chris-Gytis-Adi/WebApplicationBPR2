@@ -45,10 +45,22 @@
                         <li class="menu">
                             <a asp-controller="App" asp-action="Contact">Contact</a>
                         </li>
+                        @*<li class="menu">
+                            <a asp-controller="Account" asp-action="Register">Register</a>
+                        </li>
+                        <li class="menu">
+                            <a asp-controller="Account" asp-action="Login">Login</a>
+                        </li>*@
+                        
                         @await Component.InvokeAsync("ShoppingCartSummary")
                         @await Html.PartialAsync("LoginPartial")
+                   
+                        
+                     
+                        
                        
                     </ul>
+                    
                     <form class="navbar-form navbar-right" asp-controller="Product" asp-action="Search" method="get">
                         <div class="form-group">
                             <input type="text" class="form-control" placeholder="Search for a product" name="searchString" value="@ViewData["searchString"]">

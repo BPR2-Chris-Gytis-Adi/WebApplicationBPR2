@@ -8,6 +8,7 @@ using Microsoft.Extensions.Configuration;
 using WebApplicationBPR2.Data.Repository;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
+using Stripe;
 
 namespace WebApplicationBPR2
 {
@@ -41,12 +42,13 @@ namespace WebApplicationBPR2
             services.AddScoped<ShoppingCart>(sp => ShoppingCart.GetCart(sp)); //AddScoped creates a unique shopping cart for each user using the Getcart method
             services.AddScoped<IDataRepository, DataRepository>();
             services.AddMvc(); // injects MVC dependency (adds all services mvc needs)
-            services.AddTransient<IMailService, MockMailService>();
-            // support for real mail service
+            services.AddTransient<IMailService, MailService>();
+            services.Configure<EmailConfig>(_configuration.GetSection("Email")); // support for real mail service
             services.AddTransient<DataSeeder>(); // needed to actually seed data
 
             services.AddSession(); // to be able to work with sessions
             services.AddMemoryCache(); // used with the cart to be able to store session ids
+            services.Configure<StripeSettings>(_configuration.GetSection("Stripe"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -57,6 +59,7 @@ namespace WebApplicationBPR2
             app.UseIdentity();
 #pragma warning restore CS0618 // Type or member is obsolete
 
+            StripeConfiguration.SetApiKey(_configuration.GetSection("Stripe")["SecretKey"]); // pulls the unique stripe key from our appsettings.json
             if (env.IsDevelopment()) // one can set the environment in project Properties/Debug/Environment variables
             {
                 app.UseDeveloperExceptionPage(); // shows errors in browser when exceptions occur (only in development environment)
@@ -80,10 +83,10 @@ namespace WebApplicationBPR2
             if (env.IsDevelopment())
             {
                 // seed database
-                using (var scope = app.ApplicationServices.CreateScope()) // need to resolve some internal pipelining scope conflicts
+                using (var scope = app.ApplicationServices.CreateScope()) // needed to resolve some internal pipelining scope conflicts
                 {
                     var seeder = scope.ServiceProvider.GetService<DataSeeder>();
-                    seeder.Seed();
+                    seeder.Seed(); // calls the Seed() method in DataSeeder
                 }
             }
         }

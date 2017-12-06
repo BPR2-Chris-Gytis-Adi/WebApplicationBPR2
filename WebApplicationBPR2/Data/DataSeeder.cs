@@ -55,7 +55,7 @@ namespace WebApplicationBPR2.Data
                     }
             };
                 
-                _dataContext.Products.AddRange(products); // sends the product to the datacontext
+                _dataContext.Products.AddRange(products); // sends the product to the database
                
 
                 // add sample order
@@ -71,9 +71,9 @@ namespace WebApplicationBPR2.Data
                         }
                     }
                 };
-                _dataContext.Add(order1); // sends the order to the datacontext
+                _dataContext.Add(order1); // sends the order to the database
 
-                _dataContext.SaveChanges(); // save changes done to datacontext in the database
+                _dataContext.SaveChanges(); // save changes done to  database
             }
         }
     }

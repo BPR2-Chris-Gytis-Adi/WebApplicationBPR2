@@ -7,6 +7,7 @@ using WebApplicationBPR2.Data.Repository;
 using WebApplicationBPR2.Data;
 using Microsoft.AspNetCore.Authorization;
 using WebApplicationBPR2.Data.Entities;
+using Stripe;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -51,8 +52,33 @@ namespace WebApplicationBPR2.Controllers
             return View(order);
         }
 
-        public IActionResult CheckoutComplete()
+        public IActionResult CheckoutComplete(string stripeEmail, string stripeToken)
         {
+            var customerService = new StripeCustomerService();
+            var chargeService = new StripeChargeService();
+
+            var customer = customerService.Create(new StripeCustomerCreateOptions
+            {
+                Email = stripeEmail,
+                SourceToken = stripeToken
+            });
+
+            try
+            {
+                var charge = chargeService.Create(new StripeChargeCreateOptions
+                {
+                    CustomerId = customer.Id,
+                    Amount = (int)_shoppingCart.GetShoppingCartTotal() * 100,
+                    Currency = "usd"
+                });
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            
+
             return View();
         }
     }
