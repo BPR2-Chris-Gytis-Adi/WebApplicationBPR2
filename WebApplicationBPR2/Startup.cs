@@ -48,7 +48,7 @@ namespace WebApplicationBPR2
 
             services.AddSession(); // to be able to work with sessions
             services.AddMemoryCache(); // used with the cart to be able to store session ids
-            services.Configure<StripeSettings>(_configuration.GetSection("Stripe"));
+            //services.Configure<StripeSettings>(_configuration.GetSection("Stripe"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -1,20 +1,21 @@
-﻿@using Microsoft.Extensions.Options
-@inject IOptions<StripeSettings> StripeSet
-<div id="body">
+﻿<div id="body">
     <div class="header">
-        <form asp-controller="Order" asp-action="CheckoutComplete" method="post">
-            <script src="//checkout.stripe.com/v2/checkout.js"
-                class="stripe-button"
-                data-key="@StripeSet.Value.PublishableKey">
-                
-                
-            </script>
-        </form>
-
-
-        @*<div>
+        <div>
             <h1>Thank you for your order. </h1>
             <h1>We will send you an email with delivery info in max. 24h.</h1>
-        </div>*@
+        </div>
     </div>
 </div>
+
+        
+@*@using Microsoft.Extensions.Options
+@inject IOptions<StripeSettings> StripeSet
+    
+<form asp-controller="Order" asp-action="CheckoutComplete" method="post">
+    <script src="//checkout.stripe.com/v2/checkout.js"
+            class="stripe-button"
+            data-key="@StripeSet.Value.PublishableKey">
+
+
+    </script>
+</form>*@

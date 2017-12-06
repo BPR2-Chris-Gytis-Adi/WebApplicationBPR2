@@ -52,33 +52,8 @@ namespace WebApplicationBPR2.Controllers
             return View(order);
         }
 
-        public IActionResult CheckoutComplete(string stripeEmail, string stripeToken)
+        public IActionResult CheckoutComplete()
         {
-            var customerService = new StripeCustomerService();
-            var chargeService = new StripeChargeService();
-
-            var customer = customerService.Create(new StripeCustomerCreateOptions
-            {
-                Email = stripeEmail,
-                SourceToken = stripeToken
-            });
-
-            try
-            {
-                var charge = chargeService.Create(new StripeChargeCreateOptions
-                {
-                    CustomerId = customer.Id,
-                    Amount = (int)_shoppingCart.GetShoppingCartTotal() * 100,
-                    Currency = "usd"
-                });
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
-            
-
             return View();
         }
     }
