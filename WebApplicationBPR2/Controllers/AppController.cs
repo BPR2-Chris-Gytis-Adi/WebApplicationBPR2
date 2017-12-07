@@ -49,8 +49,10 @@ namespace WebApplicationBPR2.Controllers
         {
             if(ModelState.IsValid)
             {
-                // send email to the customer service departm or a copy to the client as confirmation, or both
-                _mailService.SendMail("isidoreducasse79@gmail.com", contactViewModel.Subject, $"From: {contactViewModel.Name} - {contactViewModel.Email}; Message: {contactViewModel.Message}");
+                // send email to the customer service departm 
+                _mailService.SendMail("adrianraspopa@gmail.com", contactViewModel.Subject, $"From: {contactViewModel.Name} - {contactViewModel.Email}; Message: {contactViewModel.Message}");
+                //and a copy to the client as confirmation
+                _mailService.SendMail($"{contactViewModel.Email}", contactViewModel.Subject, $"From: {contactViewModel.Name} - {contactViewModel.Email}; Message: {contactViewModel.Message}");
                 ViewBag.UserMessage = "Mail sent successfully";
                 ModelState.Clear();
             }
